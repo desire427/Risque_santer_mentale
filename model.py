@@ -20,7 +20,7 @@ from sklearn.metrics import (
 )
 from sklearn.inspection import permutation_importance
 import io
-import opendatasets as od
+import kagglehub
 
 # ─── Page config ────────────────────────────────────────────────────────────
 st.set_page_config(
