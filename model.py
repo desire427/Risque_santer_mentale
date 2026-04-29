@@ -176,8 +176,8 @@ st.markdown(f"""
 @st.cache_data
 def load_data():
     """Load the Kaggle Maternal Health Risk dataset."""
-    od.download("https://www.kaggle.com/datasets/csafrit2/maternal-health-risk-data")
-    df = pd.read_csv("maternal-health-risk-data/Maternal Health Risk Data Set.csv")
+    path = kagglehub.dataset_download("csafrit2/maternal-health-risk-data")
+    df = pd.read_csv(f"{path}/Maternal Health Risk Data Set.csv")
     df.columns = [c.strip() for c in df.columns]
     if "RiskLevel" in df.columns:
         df["RiskLevel"] = df["RiskLevel"].str.strip().str.lower()
