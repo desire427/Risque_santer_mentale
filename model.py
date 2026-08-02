@@ -394,11 +394,13 @@ elif page == "Feature Analysis":
         feat_sel = st.selectbox("Choisir une variable", features)
         fig, ax = dark_fig(figsize=(8, 4.5))
         data_plot = [df[df["RiskLevel"] == r][feat_sel].values for r in risk_order]
-        bp = ax.boxplot(data_plot, labels=risk_order, patch_artist=True,
+        bp = ax.boxplot(data_plot, patch_artist=True,
                         medianprops=dict(color=PALETTE["text"], linewidth=2),
                         whiskerprops=dict(color=PALETTE["muted"]),
                         capprops=dict(color=PALETTE["muted"]),
                         flierprops=dict(markerfacecolor=PALETTE["muted"], markersize=4, linestyle='none'))
+        ax.set_xticks([1, 2, 3])
+        ax.set_xticklabels(risk_order, fontsize=10)
         for patch, risk in zip(bp['boxes'], risk_order):
             patch.set_facecolor(RISK_COLORS[risk])
             patch.set_alpha(0.7)
